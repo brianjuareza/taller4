@@ -1,120 +1,343 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html">
+
+<html lang="es-MX">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <title>Pagina web</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <link type="image/x-icon" href="https://sysweb.unach.mx/resources/imagenes/favicon.ico" rel="shortcut icon"/>
+  <link rel="stylesheet" href="http://sysweb.unach.mx/Ingresos/bootstrap/css/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="http://sysweb.unach.mx/Ingresos/bootstrap/css/mdb.css"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="http://sysweb.unach.mx/Ingresos/bootstrap/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" /><title>
+	Login Taller 4
+</title>
+    <script language="javascript" type="text/javascript">
+
+        function TipoAcceso(Tipo) {
+            $("#divPassword").hide();
+            $("#txtPassword").hide();
+            $("#listCve").hide();
+            $("#listUser").hide();
+            $("#txtCve").hide();
+            $("#listReferencia").hide();
+            $("#txtCve").show();
+            $("#divMsjGral").show();
+            $("#divMsjUsuDep").hide();
+
+            if (Tipo === "REFERENCIA") {
+                $("#listReferencia").show();
+                $("#listCve").hide();
+                $("#txtCve").attr("placeholder", "Referencia de 26 dígitos");
+                $('.txtCve').css('cursor', 'pointer');
+                $("#txtCve").focus();
+                $("#DDLTipoUsuario").val("4");
+            }
+            else if (Tipo === "FACTURA") {
+                $("#listReferencia").show();
+                $("#listCve").hide();
+                $("#txtCve").attr("placeholder", "Referencia de 26 dígitos");
+                $('.txtCve').css('cursor', 'pointer');
+                $("#txtCve").focus();
+                $('#DDLTipoUsuario option')[5].selected = true;
+
+            }
+
+        };
+
+        function LimpiarCampos() {
+            $("#divPassword").hide();
+            $("#txtPassword").hide();
+            $("#listCve").hide();
+            $("#listUser").hide();
+            $("#txtCve").hide();
+            $("#listReferencia").hide();
+            $("#divMsjGral").show();
+            $("#divMsjUsuDep").hide();
+        }
+
+        $(document).ready(function () {
+
+
+            $("#DDLTipoUsuario").change(function () {
+                $("#divPassword").hide();
+                $("#txtPassword").hide();
+                $("#listCve").hide();
+                $("#listUser").hide();
+                $("#txtCve").hide();
+                $("#listReferencia").hide();
+                $("#txtCve").show();
+                $("#divMsjGral").show();
+                $("#divMsjUsuDep").hide();
+
+                if ($("#DDLTipoUsuario").val() == "1" || $("#DDLTipoUsuario").val() == "2" || $("#DDLTipoUsuario").val() == "4" || $("#DDLTipoUsuario").val() == "6" || $("#DDLTipoUsuario").val() == "7") {
+                    $("#divPassword").hide();
+                    $("#txtPassword").hide();
+                    $("#txtCve").focus();
+
+                    if ($("#DDLTipoUsuario").val() == "1") {
+                        $("#txtCve").attr("placeholder", "Número de Ficha ó Matricula");
+                        $("#listUser").show();
+
+
+                    }
+                    else if ($("#DDLTipoUsuario").val() == "2") {
+                        $("#listReferencia").show();
+                        $("#listCve").hide();
+                        $("#txtCve").attr("placeholder", "Referencia de 26 dígitos");
+                        $('.txtCve').css('cursor', 'pointer');
+                    }
+                    else if ($("#DDLTipoUsuario").val() == "4") {
+                        $("#listReferencia").hide();
+                        $("#listCve").hide();
+                        $("#txtCve").hide();
+                        //$("#txtCve").attr("placeholder", "Referencia de 26 dígitos");
+                        //$('.txtCve').css('cursor', 'pointer');
+                    }
+                    else if ($("#DDLTipoUsuario").val() == "7") {
+                        $("#listReferencia").show();
+                        $("#listCve").hide();
+                        $("#txtCve").attr("placeholder", "Referencia de 26 dígitos");
+                        $('.txtCve').css('cursor', 'pointer');
+                    }
+                    else {
+                        $("#listReferencia").hide();
+                        $("#listUser").show();
+
+                        $("#txtCve").attr("placeholder", "Clave SYSWEB");
+                    }
+                }
+                else if ($("#DDLTipoUsuario").val() == "5") {
+                    $("#divPassword").hide();
+                    $("#txtPassword").hide();
+                    $("#listCve").hide();
+                    $("#txtCve").hide();
+                    $("#listReferencia").hide();
+                }
+                else {
+                    $("#divPassword").show();
+                    $("#txtPassword").show();
+                    $("#listReferencia").hide();
+                    $("#listCve").show();
+                    $("#txtCve").show();
+                    $("#txtCve").attr("placeholder", "Correo UNACH");
+                    $("#txtCve").focus();
+                    $("#divMsjGral").hide();
+                    $("#divMsjUsuDep").show();
+
+
+                }
+            });
+            $("#imgFacebook").click(function () {
+                $(location).attr('href', 'https://www.facebook.com/sysweb.dsia/posts/1382513418590378');
+            });
+            $("#modalTelefonos").click(function () {
+                $("#exampleModal").modal("show");
+            });
+            $("#bttnModalActualizar").click(function () {
+                window.location = "https://sysweb.unach.mx/actualiza_correo/frmactualiza_datos.aspx?sistema=14";
+            });
+
+
+
+
+
+        });
+
+
+    </script>
+
 </head>
 <body>
-    <div class="cabeza">
+    <form name="form1" method="post" action="./" id="form1">
+<div>
+<input type="hidden" name="_EVENTTARGET" id="_EVENTTARGET" value="" />
+<input type="hidden" name="_EVENTARGUMENT" id="_EVENTARGUMENT" value="" />
+<input type="hidden" name="_VIEWSTATE" id="_VIEWSTATE" value="/wEPDwUKLTgzMzQyNDcyNWRkwKwHeTrfnj8RaV0WfRJUFMlMmdvrhFajSV57hi3BafM=" />
+</div>
 
-        <div class="logo">
-            <a href="#">logo</a>
+<script type="text/javascript">
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/Ingresos/WebResource.axd?d=GFEJaWMDzowGXPC2vhL-qf5J_sQM08twKFR3VXQHytRGw2FlpMoowqpPyq-xIYVLZZ1eSdpCbdTQDV0feKl5MkFOCFNlTho-hHkizZFmz781&amp;t=638018763588333543" type="text/javascript"></script>
+
+
+<script src="/Ingresos/ScriptResource.axd?d=pbWvyd7K4gkXd7YrGtgNnAzcGysOgKCLI3ng8U4OGWOTd8ebNpzGxuVZ16t_LwnSOrdODgD6MtnfcDbs9ysbY00BGfjg4XCLciijq6aqVu7Hx-OLBJcDYhoFIEemC84leSmmsq44R-ihJHjc-2Rco3BZHt1__o97uSRYr-vMSIo1&amp;t=ffffffffe6d5a9ac" type="text/javascript"></script>
+<script src="/Ingresos/ScriptResource.axd?d=dq8bu2bWgSZSA1XqzJ2GujatJfzb101CigakLyzdGLkFfBy_c8lVKJMBAj9EMUQOYzzJIWfgK2jhoPjGrMwHGiIQQ-nL8g4WOvdAheRie2b8bl3qAW1vlHgIi6LegBQh8PpTKYrniXkqZ11TWOokhqNYWdUjfPdKwqKwY5-jkyuaixkMoneIooRenJ_9a7KX0&amp;t=ffffffffe6d5a9ac" type="text/javascript"></script>
+<div>
+
+	<input type="hidden" name="_VIEWSTATEGENERATOR" id="_VIEWSTATEGENERATOR" value="215E3FB8" />
+	<input type="hidden" name="_EVENTVALIDATION" id="_EVENTVALIDATION" value="/wEdAArZNl9jv3D8kYuvgvKIGxWIJaYK8jou/5t0ode+DRoJ/4HimsnnVRs57WriFQr/0oLGRIOuo6GZheoAZzY8YPWEudvGKdiIUglNR5lXY+U7y1khH4+bFEjgodQ5HY1+tteiJ73YRtSvDd0rQEEbhWIlAlRR8tDufdah6qQKbZotOXY2+Mc6SrnAqio3oCKbxYZt8fuKsCMPoOSzzbQvlqRNzuP2Bl/F1g1MtkhKecobPxPupcgfnT2J0fjlfVQoaO8=" />
+</div>
+        <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ScriptManager1', 'form1', ['tUpdatePanel2','','tUpdatePanel1',''], [], [], 90, '');
+//]]>
+</script>
+
+
+
+        <div class="page-header" style="background-color: #18386b">
+            <div class="row">
+                <div class="col-md-4">
+                    <img id="imgSYSWEB" src="https://sysweb.unach.mx/resources/imagenes/sysweb2018230.png" class="img-fluid d-none d-sm-none d-md-block" alt="Responsive image" style="cursor: pointer" />
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="text-light font-weight-bold">
+                        <h4 class="media-heading">Universidad Autonoma de Chiapas</h4>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="https://sysweb.unach.mx/resources/imagenes/unach.jpg" class="img-fluid d-none d-sm-none d-md-block" alt="Responsive image" style="cursor: pointer" />
+                </div>
+            </div>
+        </div>
+        <div class="bg-light">
+            <article class="card-body mx-auto" style="max-width: 450px;">
+                
+                    <div class="card-body">
+                        <h5>Iniciar Sesión</h5>
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-cog"></i></span>
+                            </div>
+                            <select name="DDLTipoUsuario" id="DDLTipoUsuario" class="form-control">
+	<option value="5">Seleccionar</option>
+	<option value="1">Alumno &#243; Aspirante</option>
+	<option value="3">Usuario Dependencia</option>
+	<option value="7">Referencia Bancaria</option>
+	<option value="6">Cliente UNACH</option>
+	<option value="4">Facturas</option>
+
+</select>
+                        </div>
+                        <div class="form-group input-group">
+                            <div id="listUser" class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            </div>
+                            <div id="listCve" class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-at"></i></span>
+                            </div>
+                            <div id="listReferencia" class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-barcode"></i></span>
+                            </div>
+                            <input name="txtCve" type="text" id="txtCve" tabindex="1" class="form-control" />
+                        </div>
+                        <div class="form-group input-group">
+                            <div id="divPassword" class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                            </div>
+                            <input name="txtPassword" type="password" id="txtPassword" tabindex="2" class="form-control" placeholder="Contraseña" />
+
+                        </div>
+                        <div class="form-group text-center">
+                            <div id="UpdatePanel2">
+	
+                                    
+                                
+</div>
+                            <br />
+                            <div id="UpdatePanel1">
+	
+                                    <input type="submit" name="btnIngresar" value="Iniciar Sesión" id="btnIngresar" tabindex="5" class="btn" style="background-color: #d2af47; color: #fff" />
+                                
+</div>
+                            <div id="updPrMultiview" style="display:none;">
+	
+                                    <img id="imgMultiview" title="Espere un momento, por favor.." src="https://sysweb.unach.mx/resources/imagenes/ajax_loader_gray_512.gif" alt="Espere un momento, por favor.." style="height:50px;border-width:0px;" />
+                                
+</div>
+
+
+                        </div>
+                       
+                        <p class="note note-warning">
+                            El acceso a esta página es para obtener el comprobante oficial de alguno de los servicios que proporciona la universidad.             
+                        </p>
+                        <div id="divMsjUsuDep" class="alert alert-warning" role="alert">
+                            <strong>El acceso al sistema es con la cta. y la contraseña del correo unach,</strong> si no actualizaste tu información dar click en el siguiente enlace.<br />
+                            <a href="https://ldapauthmaster.unach.mx/pssform_resetaccount.php" target="_blank">¿Olvidó  la contraseña del correo institucional?</a>
+
+                        </div>
+                    </div>
+                  
+                </div>
+            </article>
+        </div>
+        <!-- card.// -->
+
+        <div class="piePagina" style="width: 100%">
+            <footer class="page-footer font-small pt-4" style="background-color: #585858; color: #fff">
+                <div class="container-fluid text-center text-md-left">
+                    <div class="row">
+                        <hr class="clearfix w-100 d-md-none pb-3">
+                        <div class="col-md-6 mb-md-0 mb-3">
+                            <h6 class="text-uppercase mb-4 font-weight-bold">Contacto</h6>
+                            <p>
+                                <i class="fas fa-home mr-3"></i>2da. Poniente Sur No. 108, Edificio Maciel, 3er. Piso Tuxtla Gutiérrez, Chiapas.
+                            </p>
+                            <p><i class="fas fa-envelope mr-3"></i>depfin@unach.mx, sysweb@unach.mx</p>
+                            <p><i class="fas fa-phone mr-3"></i>(961) 459 32 71</p>
+                        </div>
+                        <div class="col-md-6 mb-md-0 mb-3">
+                            <div class="text-xl-center">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright text-center py-3">Universidad Autónoma de Chiapas</div>
+            </footer>
         </div>
 
-
-        <nav class="navbar">
-            <a href="#">Inicio</a>
-            <a href="#">Nosotros</a>
-            <a href="#">Contacto</a>
-            <a href="#">Productos</a>
-            <a href="#">Precio</a>
-
-        </nav>
-
-        <header class="content header">
-            <h2 class="title">Inicio</h2>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Fuga vel delectus, perferendis deleniti cumque exercitationem blanditiis 
-                nostrum, ex ratione maiores quia mollitia. Quas eligendi accusantium et, 
-                facilis natus dolores iusto!
-            </p>
-
-            <div class="btn-home">
-                <a href="#" class="btn">Saber mas</a>
-                <a href="#" class="btn">Saber mas</a>
-            </div>
-        </header>
-
-        <section class="content sau">
-
-            <h2 class="title">Productos</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Reprehenderit molestiae est, sapiente delectus officia quibusdam. 
-                Rerum aut mollitia tempora sequi neque pariatur tempore dolor,
-                 illo eius iusto error recusandae minus?</p>
-
-
-            <div class="box-container">
-                <div class="box">
-                    <i class="fab fa-angular"></i>
-                    <h3>lorem</h3>
-                    <p>sequi neque pariatur tempore dolor</p>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Teléfono</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info" role="alert">
+                            ¿Dudas? marca al siguiente numero aunque te responderemos en una semana
+                        </div>
+                        (961) 459 32 71
+          <br />
+                        <h4>FINANZAS: ext. 5108</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-mdb-color" data-dismiss="modal">Cerrar</button>
+                    </div>
                 </div>
             </div>
-
-            <div class="box-apple">
-                <div class="box">
-                    <i class="fab fa-angular"></i>
-                    <h3>lorem</h3>
-                    <p>sequi neque pariatur tempore dolor</p>
-                </div>
-            </div>
-
-            <div class="box-android">
-                <div class="box">
-                    <i class="fab fa-angular"></i>
-                    <h3>lorem</h3>
-                    <p>sequi neque pariatur tempore dolor</p>
-                </div>
-            </div>
-
-
-        </section>
-
-        <section class="content about">
-
-            <h2 class="title">Nosotros</h2>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                Soluta labore repellat vero provident, possimus repudiandae 
-                adipisci asperiores ut odit cum voluptas voluptates architecto
-                 earum fugiat facere rerum, reprehenderit quia quae!</p>
-
-            <a href="#" class="btn">Saber mas</a>
-
-            
-        </section>
-
-        <section class="content price">
-
-            <article class="contain">
-                <h2 class="title">Precio</h2>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                    Soluta labore repellat vero provident, possimus repudiandae 
-                    adipisci asperiores ut odit cum voluptas voluptates architecto
-                     earum fugiat facere rerum, reprehenderit quia quae!</p>
-
-                     <a href="#" class="btn">Saber precio</a>
-
-            </article>
-
-        </section>
-
-        <section class="content contact">
-            <h2 class="title">contacto</h2>
-            <p>9614593271</p>
-            <figure class="map">
-                <img src="Mapa.png" height="300px" width="30%" alt="Mapa">
-            </figure>
-
-        </section>
-
-
-    </div>
+        </div>
     
+
+<script type="text/javascript">
+//<![CDATA[
+LimpiarCampos();Sys.Application.add_init(function() {
+    $create(Sys.UI._UpdateProgress, {"associatedUpdatePanelId":"UpdatePanel1","displayAfter":500,"dynamicLayout":true}, null, null, $get("updPrMultiview"));
+});
+//]]>
+</script>
+</form>
 </body>
 </html>
